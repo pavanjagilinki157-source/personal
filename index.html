@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Three Line Info</title>
+
+  <!-- Romantic Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffe6e6, #fce3ff, #ffe0f0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .info {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #7b2c5b;
+      font-family: 'Dancing Script', cursive;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards, glow 2s ease-in-out infinite alternate;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    /* Sequential delays */
+    .info p:nth-child(1) { animation-delay: 0.5s, 0.5s; color: #c94f7c; }
+    .info p:nth-child(2) { animation-delay: 1.5s, 1.5s; color: #b56576; }
+    .info p:nth-child(3) { animation-delay: 2.5s, 2.5s; color: #8e3b59; }
+
+    /* Fade in */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Romantic Glow Effect */
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff99b6, 0 0 10px #ffb6c1, 0 0 15px #ff99cc;
+      }
+      to {
+        text-shadow: 0 0 10px #ff6699, 0 0 20px #ff99cc, 0 0 30px #ffb6c1;
+      }
+    }
+
+    /* Romantic underline gradient */
+    .info p::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ffb6c1, #f78da7, #ff9aa2);
+      transition: width 0.8s ease;
+      border-radius: 2px;
+    }
+
+    .info p.shown::after {
+      width: 100%;
+    }
+
+    /* Floating hearts background */
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hearts span {
+      position: absolute;
+      bottom: -50px;
+      color: rgba(255, 105, 180, 0.7);
+      font-size: 2rem;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) rotate(0deg); opacity: 1; }
+      to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts -->
+  <div class="hearts">
+    <span style="left:10%;">💖</span>
+    <span style="left:20%; animation-delay:1s;">💕</span>
+    <span style="left:30%; animation-delay:2s;">💞</span>
+    <span style="left:40%; animation-delay:3s;">💘</span>
+    <span style="left:50%; animation-delay:4s;">💓</span>
+    <span style="left:60%; animation-delay:2.5s;">❤️</span>
+    <span style="left:70%; animation-delay:1.5s;">💝</span>
+    <span style="left:80%; animation-delay:3.5s;">💟</span>
+    <span style="left:90%; animation-delay:0.5s;">❣️</span>
+  </div>
+
+  <div class="info">
+    <p>👋💕 Hi.. 🌹✨</p>
+    <p>🌞💖 Good Morning.. 🌸😍</p>
+    <p>🤗🌷 Vomtings thaggayaa..? 💕😊</p>
+  </div>
+
+  <script>
+    const lines = document.querySelectorAll('.info p');
+    lines.forEach((line) => {
+      line.addEventListener('animationend', () => {
+        line.classList.add('shown');
+      });
+    });
+  </script>
+
+</body>
+</html>
